@@ -61,7 +61,8 @@ if __name__ == "__main__":
             with open(data_filepath, "r", encoding="utf-8") as f:
                 items = [json.loads(line) for line in f]
         else:
-            raise ValueError("Unsupported file extension. Please use .json or .jsonl files.")
+            print(data_filepath)
+            raise ValueError(f"Unsupported file extension. {data_filepath} Please use .json or .jsonl files.")
         items = items
     except FileNotFoundError:
         print(f"Error: Input file not found at {data_filepath}")
@@ -110,7 +111,8 @@ if __name__ == "__main__":
     tasks_to_run_all = []
     per_rollout_task_counts = {i: 0 for i in range(1, roll_out_count + 1)}
     # Define ports
-    planning_ports = [6001, 6002, 6003, 6004, 6005, 6006, 6007, 6008]
+    # planning_ports = [6001, 6002, 6003, 6004, 6005, 6006, 6007, 6008]
+    planning_ports = [8000]
     # Round-robin state
     planning_rr_idx = 0
     summary_rr_idx = 0
